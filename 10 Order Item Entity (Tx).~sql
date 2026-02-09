@@ -1,0 +1,163 @@
+----------------------2.string/character function------------------------------
+1.upper():
+--It is used to convert a string into uppercase and column into uppercase.
+-- it returns the whole string into upper case(capital).
+
+select upper(first_name) from hr.employees;
+select upper('abc') from dual;
+SELECT UPPER('hanmant'),UPPER('Hanmant') FROM dual;
+
+2.lower()
+--It is used to convert a string into lowercase and column into lowercase.
+--it returns whole string into  lover case(small).
+
+select lower(first_name) from hr.employees;
+select lower('ABC') from dual;
+SELECT LOWER('Hanmant'),LOWER('HANMANT') FROM dual;
+
+
+3.initcap():
+--It returns 1st letter is capital and remaining letter are small.
+
+-- this will be capitalise the initial letter of the string
+-- it returns first letter capital & remaining letters are small.
+
+select initcap(ename) from emp;
+select initcap('abc') from dual;
+SELECT INITCAP(first_name) FROM employees;
+SELECT INITCAP('hanmant'),INITCAP('HANMANT')  FROM dual;
+SELECT INITCAP ('hanMANt saLunKE') from dual;
+
+
+4.length():
+--Always it returns number datatype it returns total length of string including spaces
+--it is used to return length of string/column.
+
+select length('WX YZ') from dual;
+SELECT length(first_name) FROM hr.employees;
+SELECT LENGTH('Hanmant'),LENGTH('Gudfale') FROM dual;
+
+
+
+5.substr():
+--It will extract portion of the string within given string based on last two parameters.
+
+--it is used to extract substrings from string/column.
+
+syntax:
+substr(colname,starting position,no.of characters from posion)
+
+select substr('ABCDEFGH',2,3) FROM DUAL;
+select substr('ABCDEFGH',-4,2) FROM DUAL;
+select substr('HemantGudface', 1,6) from dual;
+SELECT SUBSTR('Hanmant',1,3) FROM dual;
+SELECT SUBSTR('Hanmant',-7,3) FROM dual;
+SELECT SUBSTR(first_name,1,3) FROM employees;
+
+
+6.instr():
+--instr always returns number datatype i.e., it returns position of the delimeter,
+--position of the character,position of the string within given string.
+
+--it returns position of the charecter from a string/column.
+
+select instr('ABC*D','*') from dual;
+select instr('ABCDEFGHCDIJKLCDMNP','CD',-5,2) from dual;
+(searching from right to left and print output left to right)
+select instr('ABCDEABFGHCDIABJKLABCDMNP','AB',1,2) from dual;
+
+select instr('ABCDEABFGHCDIABJKLABCDMNP','AB',-7,2) from dual;
+
+SELECT INSTR('intormation','t',-1,1),INSTR('intormation','t',-1,2) FROM dual;
+SELECT INSTR('intormation','t',1,1),INSTR('intormation','t',1,2) FROM dual;
+
+
+
+7.lpad() & rpad():
+--It will fills remaining spaces with specified character onthe left side of given string.
+--Here always second parameter returns total length of string.
+lpad:
+--this will allows you to pad the right side of string/column with any set of charecters.
+
+syntax:
+lpad(columnname/'string ',total length,'fill character') from tname;
+eg:
+
+select lpad('ABCD',10,'#') from dual;
+SELECT LPAD('Hanmant',10,'@'),LPAD('Hanmant',10,'*') FROM dual;
+
+rpad:
+--this will allows you to pad the left side of string/column with any set of charecters.
+eg:
+select rpad('ABCD',10,'#') from dual;
+SELECT RPAD('hanmant',10,'1'),RPAD('Hanmant',10,'*') FROM dual;
+
+eg:
+select lpad('ABC',2,'*') from dual;
+select rpad('ABC',2,'*') from dual;
+
+
+--Note:Whenever we are passing more no. of character then the total length specified in second parameter
+--then lpad() and rPad() returns same output bacouse 
+--when we are submiting lpad() rpad() into oracle server then oracle server always execute left side 1st character onwards
+--within 1st parameter.
+
+
+ltrim():
+--It removes specified character on the left side of the given string.
+select ltrim('SSTHSSMISS','S') from dual;
+
+rtrim():
+select rtrim('SSTHSSMISS','S') from dual;
+
+trim():
+--It is used to remove left and right side specified character.It is also ued to remove
+--leading,trailing spaces.
+syntax:
+trim(character from 'stringname')
+
+eg:
+select trim('S' from 'SSTHSSMISS')from dual;
+
+SELECT TRIM('n' FROM 'neen') FROM dual;
+
+SELECT TRIM('A' FROM first_name) FROM employees;
+
+SELECT TRIM ('h' FROM 'hanmant') FROM dual; 
+
+
+--trim() can also used as ltrim() and rtrim().
+for ltrim():
+select trim(leading'S' from 'SSTHSSMISS') from dual;
+
+--we can also convert trim() to ltrim by using leading class and also convert trim() to
+--                                     rtrim by using trailling clouse.
+
+for rtrim():
+select trim(trailing 'S' from 'SSTHSSMISS') from dual;
+
+9.translate() and  replace()
+--Translate () is used to replace character by character as 
+--replace function is used to replace character by string or string by string
+
+eg:
+select translate('india','in','xy') from dual;
+select replace('india','in','XY') from dual;
+select replace('SSTHSSMISS', 'SS', '@') from dual;
+select translate('SSTHSSMISS', 'SS', '@') from dual;
+
+--In oracle whenever we are not specifynig third parameter within replace function
+--then automatically second parameter specify value permanently removed from the given string.
+select replace('SSTHSSMISS', 'SS') from dual;
+
+
+10.concat():
+--It is used to concatinate two strings.
+--it is used to  combine two strings/columns only.
+
+select concat('wel','come') from dual;
+
+SELECT CONCAT('hanmant','gudfale') FROM dual;
+
+SELECT CONCAT(first_name,last_name) FROM employees;
+
